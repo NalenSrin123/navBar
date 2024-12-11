@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online-Store</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    header{
+        width: 100%;
+        height: 120px;
+        background-color: #000;
+        padding: 0 30px;
+    }
+    .logo{
+        width: 30%;
+        height: 100%;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        & img{
+            width: 80px;
+            height: 80px;
+            /* border-radius: 50%; */
+            border-radius: 5px;
+        }
+    }
+    nav{
+        width: 100%;
+        height: 60px;
+        background-color: rgb(21, 9, 249);
+        display: flex;
+        position: relative;
+    }
+    .menu{
+        width: 95%;
+        margin: auto;
+        height: 100%;
+        position: relative;
+        /* background-color: red; */
+    }
+    .menu ul{
+        height: 100%;
+        list-style: none;
+        display: flex;
+        gap: 20px;
+    }
+    .menu ul li{
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0px 15px;
+    }
+    /* .menu ul li:hover{
+        background-color:rgb(15, 7, 157) ;
+    } */
+    .menu ul li a:hover{
+        color: #0e0e0e;
+    }
+    .menu ul li a{
+        text-decoration: none;
+        color: #fff;
+        font-size: 18px;
+        font-weight: bold;
+        font-family: 'Times New Roman', Times, serif;
+    }
+    .login{
+        width: 40%;
+        /* background-color: red; */
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        gap: 20px;
+        padding: 0 20px;
+    }
+    .login .btn{
+        background-color:#fff;
+    }
+    .login .btn:hover{
+        background-color: #0baaa2;
+       
+    }
+    .drop{
+        position: relative;
+    }
+    .drop_down{
+        position: absolute;
+        top: 60px;
+        width: 150px;
+        background-color: #000000bb;
+        display: flex;
+        padding: 0;
+        z-index: 111;
+        padding: 10px 0;
+        display: none;
+        & ul{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            /* background-color: pink; */
+            padding: 0;
+            & li{
+                width: 100%;
+            }
+            & li:hover{
+                background-color: transparent;
+            }
+        }
+    }
+    .login-modal{
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        background-color: rgba(171, 171, 171, 0.653);
+        display: none;
+        & .container{
+            width: 350px;
+        }
+    }
+    form.container{
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px 30px;
+        margin-top: 40px;
+    }
+    .fa-bars{
+        font-size: 30px;
+        position: absolute;
+        left: 15px;
+        top: 10px;
+        color: #fff;
+        display: none;
+    }
+    .fa-x{
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        color: #000;
+        display: none;
+    }
+    @media (max-width: 575.98px) { 
+        .menu{
+            display: none;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(214, 214, 214, 0.638);
+            position: absolute;
+            top: 0;
+            & ul{
+                width: 50%;
+                height: 100vh;
+                display: flex;
+                flex-direction: column;
+                background-color: blue;
+                align-items: start;
+                gap: 15px;
+                padding: 0;
+                & li{
+                    /* background-color: green; */
+                    width: 100%;
+                    height: auto;
+                    padding: 5px 10px;
+                    display: flex;
+                    justify-content: start;
+                }
+            }
+
+        }
+        nav {
+            display: flex;
+            justify-content: end;
+        }
+        .login-modal{
+            padding-top: 100px;
+        }
+        .fa-bars{
+            display: block;
+        }
+        #li{
+            display: flex;
+            flex-direction: column;
+            /* background-color: red; */
+            align-items: start;
+        }
+        .drop_down{
+            position: static;
+            width: 100%;
+            /* height: 300px; */
+            height: auto;
+            background-color: blue;
+            padding: 0;
+            & ul{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+            & li{
+                width: 100%;
+            }
+            & li:hover{
+                background-color: transparent;
+            }
+        }
+        }
+        .fa-x{
+            display: block;
+        }
+     }
+</style>
+<body>
+    <header>
+        <div class="logo">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmfgEsISgcMna9mdI-t_XY7o-WkAI0ctitvg&s" alt="">
+        </div>
+    </header>
+    <nav>
+        <i class="fa-solid fa-bars"></i>
+        <div class="menu">
+            <i class="fa-solid fa-x"></i>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li id="li"><a href="#" class="drop" >Course <i class="fa-solid fa-chevron-right ms-2"></i></a>
+                    <div class="drop_down">
+                        <ul>
+                            <li><a href="#">HTML</a></li>
+                            <li><a href="#">CSS</a></li>
+                            <li><a href="#">Java Script</a></li>
+                            <li><a href="#">Java</a></li>
+                            <li><a href="#">PHP</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Location</a></li>
+            </ul>
+        </div>
+        <div class="login">
+            <button class="btn">Register</button>
+            <button class="btn btnLogin">Login</button>
+        </div>
+    </nav>
+    <div class="login-modal">
+        <form action="" class="container">
+            <h3 class="text-center">Login</h3>
+            <div class="form-group">
+                <label for="">Username/Email</label>
+                <input type="text" name="" id="" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="">Password</label>
+                <input type="password" name="" id="" class="form-control">
+            </div>
+           <button class="btn btn-warning mt-4 me-2">Login</button>
+           <button class="btn btn-danger mt-4 btnCancel">Cancel</button>
+        </form>
+    </div>
+</body>
+</html>
+<script>
+    $(document).ready(function(){
+        var b=true
+        $('.drop').click(function(){
+            $('.drop_down').stop(true).slideToggle(200)
+           if(b){ 
+            $('.fa-chevron-right').css("transform","rotate(90deg)")
+            b=false
+           }else{
+            $('.fa-chevron-right').css("transform","rotate(0deg)")
+            b=true
+           }
+            
+        })
+        // $('.drop').mouseout(function(){
+        //     $('.drop_down').stop(true).slideUp(200)
+        //     $('.fa-chevron-right').css("transform","rotate(0deg)")
+        // })
+        $('.btnLogin').click(function(){
+            $('.login-modal').slideDown(300)
+        })
+        $('.btnCancel').click(function(){
+            $('.login-modal').slideUp(300)
+        })
+        $('.fa-bars').click(function(){
+            $('.menu').fadeIn(500);
+        })
+        $('.fa-x').click(function(){
+            $('.menu').fadeOut(500);
+        })
+        
+    })
+</script>
